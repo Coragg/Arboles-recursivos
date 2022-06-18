@@ -1,75 +1,78 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <stdbool.h>
 
-#define FALSE false
-#define NAME 45
-#define RUT 12
-#define NAME_SUR 100
-bool True = true;
-bool False = false;
+#define NAME 60
 
 struct nodo
 {
   int rut;
   int cantidad;
-  struct nodo *izq;
-  struct nodo *der;
+  struct nodo *izquierda;
+  struct nodo *derecha;
 };
 typedef struct nodo tNodo;
-typedef tNodo *ArborBinarioOrdenado;
-ArborBinarioOrdenado createNodo(int rut, int cantidad)
-{
-  ArborBinarioOrdenado auxiliar;
+typedef tNodo *ABO;
 
-  auxiliar = (ArborBinarioOrdenado)malloc(sizeof(tNodo));
-  if (auxiliar != NULL)
+ABO crearNodo(int rut, int cantidad)
+{
+  ABO data;
+
+  data = (ABO)malloc(sizeof(tNodo));
+  if (data != NULL)
   {
-    auxiliar->rut = rut;
-    auxiliar->cantidad = cantidad;
-    auxiliar->izq = NULL;
-    auxiliar->der = NULL;
+    data->rut = rut;
+    data->cantidad = cantidad;
+    data->izquierda = NULL;
+    data->derecha = NULL;
   }
   else
   {
     printf("\nNo hay memoria suficiente. Este programa se cerrara.");
     exit(1);
   }
-  return auxiliar;
+  return data;
 }
-
-void inOrden(ArborBinarioOrdenado Arbol)
+void escribeArchivo(ABO nodoArbol, FILE *archivo)
 {
-  if (Arbol != NULL)
+  if (nodoArbol != NULL)
   {
-    inOrden(Arbol->izq);
-    printf("%i(%i) ", Arbol->rut, Arbol->cantidad);
-    inOrden(Arbol->der);
+    escribeArchivo(nodoArbol->izquierda, archivo);
+    if (nodoArbol->cantidad > 2)
+      fprintf(archivo, "%i %i \n", nodoArbol->rut, nodoArbol->cantidad);
+    escribeArchivo(nodoArbol->derecha, archivo);
   }
 }
 
-ArborBinarioOrdenado insertarABO(ArborBinarioOrdenado Arbol, int rut, int cantidad)
+void generarSalida(ABO A)
 {
-  if (Arbol == NULL)
-    Arbol == createNodo(rut, cantidad);
+  char fileName[60];
+  printf("Ingrese el nombre del archivo de salida: ");
+  gets(fileName);
+  FILE *openFile;
+  openFile = fopen(fileName, "w");
+  escribeArchivo(A, openFile);
 
+  fclose(openFile);
+}
+
+ABO insertaABO(ABO arbolOrdenado, int rut, int cantidad)
+{
+  if (arbolOrdenado == NULL)
+    arbolOrdenado = crearNodo(rut, cantidad);
   else
   {
-    if (rut < Arbol->rut)
+    if (rut < arbolOrdenado->rut)
+      arbolOrdenado->izquierda = insertaABO(arbolOrdenado->izquierda, rut, cantidad);
+    else
     {
-      Arbol->izq = insertarABO(Arbol->izq, rut, cantidad);
+      if (rut == arbolOrdenado->rut)
+        arbolOrdenado->cantidad += cantidad;
+      else
+        arbolOrdenado->derecha = insertaABO(arbolOrdenado->derecha, rut, cantidad);
     }
-    else if (rut > Arbol)
-    {
-      if (rut == Arbol->rut)
-      {
-        Arbol->cantidad = Arbol->cantidad + cantidad;
-      }
-      Arbol->der = insertarABO(Arbol->der, rut, cantidad);
-    }
-    return Arbol;
   }
+  return arbolOrdenado;
 }
 
 void readFile(char nameFile[])
@@ -82,46 +85,30 @@ void readFile(char nameFile[])
 int main()
 {
   system("color 3");
-/*   char nameFile[NAME];
+  char nameFile[NAME];
   printf("Ingrese el nombre del archivo: ");
   gets(nameFile);
-  readFile(nameFile); */
+  readFile(nameFile);
 
-  ArborBinarioOrdenado Arbol;
+  ABO A;
+  A = NULL;
 
-  Arbol = NULL;
+  A = insertaABO(A, 100, 10);
+  A = insertaABO(A, 50, 2);
+  A = insertaABO(A, 150, 5);
+  A = insertaABO(A, 25, 2);
+  A = insertaABO(A, 75, 1);
+  A = insertaABO(A, 125, 2);
+  A = insertaABO(A, 200, 2);
 
-  Arbol = insertarABO(Arbol, 100, 1);
-  inOrden(Arbol);
-  printf("\n\n");
+  A = insertaABO(A, 50, 1);
+  A = insertaABO(A, 125, 2);
+  A = insertaABO(A, 50, 1);
+  A = insertaABO(A, 75, 4);
+  A = insertaABO(A, 50, 2);
 
-  Arbol = insertarABO(Arbol, 50, 2);
-  inOrden(Arbol);
-  printf("\n\n");
-
-  Arbol = insertarABO(Arbol, 150, 3);
-  inOrden(Arbol);
-  printf("\n\n");
-
-  Arbol = insertarABO(Arbol, 25, 4);
-  inOrden(Arbol);
-  printf("\n\n");
-
-  Arbol = insertarABO(Arbol, 75, 5);
-  inOrden(Arbol);
-  printf("\n\n");
-
-  Arbol = insertarABO(Arbol, 110, 6);
-  inOrden(Arbol);
-  printf("\n\n");
-
-  Arbol = insertarABO(Arbol, 30, 7);
-  inOrden(Arbol);
-  printf("\n\n");
-
-  Arbol = insertarABO(Arbol, 50, 10);
-  inOrden(Arbol);
-  printf("\n\n");
+  generarSalida(A);
+  printf("\n");
 
   return 0;
 }
