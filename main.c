@@ -33,14 +33,14 @@ ABO crearNodo(int rut, int cantidad)
   }
   return data;
 }
-void escribeArchivo(ABO nodoArbol, FILE *archivo)
+void escribirArchivo(ABO nodoArbol, FILE *archivo)
 {
   if (nodoArbol != NULL)
   {
-    escribeArchivo(nodoArbol->izquierda, archivo);
+    escribirArchivo(nodoArbol->izquierda, archivo);
     if (nodoArbol->cantidad > 2)
       fprintf(archivo, "%i %i \n", nodoArbol->rut, nodoArbol->cantidad);
-    escribeArchivo(nodoArbol->derecha, archivo);
+    escribirArchivo(nodoArbol->derecha, archivo);
   }
 }
 
@@ -51,31 +51,31 @@ void generarSalida(ABO A)
   gets(fileName);
   FILE *openFile;
   openFile = fopen(fileName, "w");
-  escribeArchivo(A, openFile);
+  escribirArchivo(A, openFile);
 
   fclose(openFile);
 }
 
-ABO insertaABO(ABO arbolOrdenado, int rut, int cantidad)
+ABO insertarDataEnArbolBinarioOrdenado(ABO arbolOrdenado, int rut, int cantidad)
 {
   if (arbolOrdenado == NULL)
     arbolOrdenado = crearNodo(rut, cantidad);
   else
   {
     if (rut < arbolOrdenado->rut)
-      arbolOrdenado->izquierda = insertaABO(arbolOrdenado->izquierda, rut, cantidad);
+      arbolOrdenado->izquierda = insertarDataEnArbolBinarioOrdenado(arbolOrdenado->izquierda, rut, cantidad);
     else
     {
       if (rut == arbolOrdenado->rut)
         arbolOrdenado->cantidad += cantidad;
       else
-        arbolOrdenado->derecha = insertaABO(arbolOrdenado->derecha, rut, cantidad);
+        arbolOrdenado->derecha = insertarDataEnArbolBinarioOrdenado(arbolOrdenado->derecha, rut, cantidad);
     }
   }
   return arbolOrdenado;
 }
 
-void readFile(char nameFile[])
+void readFile(char nameFile[NAME])
 {
   FILE *openFile = fopen(nameFile, "r");
 
@@ -93,19 +93,19 @@ int main()
   ABO A;
   A = NULL;
 
-  A = insertaABO(A, 100, 10);
-  A = insertaABO(A, 50, 2);
-  A = insertaABO(A, 150, 5);
-  A = insertaABO(A, 25, 2);
-  A = insertaABO(A, 75, 1);
-  A = insertaABO(A, 125, 2);
-  A = insertaABO(A, 200, 2);
+  A = insertarDataEnArbolBinarioOrdenado(A, 25833773, 10);
+  A = insertarDataEnArbolBinarioOrdenado(A, 50, 2);
+  A = insertarDataEnArbolBinarioOrdenado(A, 150, 5);
+  A = insertarDataEnArbolBinarioOrdenado(A, 25, 2);
+  A = insertarDataEnArbolBinarioOrdenado(A, 75, 1);
+  A = insertarDataEnArbolBinarioOrdenado(A, 125, 2);
+  A = insertarDataEnArbolBinarioOrdenado(A, 200, 2);
 
-  A = insertaABO(A, 50, 1);
-  A = insertaABO(A, 125, 2);
-  A = insertaABO(A, 50, 1);
-  A = insertaABO(A, 75, 4);
-  A = insertaABO(A, 50, 2);
+  A = insertarDataEnArbolBinarioOrdenado(A, 50, 1);
+  A = insertarDataEnArbolBinarioOrdenado(A, 125, 2);
+  A = insertarDataEnArbolBinarioOrdenado(A, 50, 1);
+  A = insertarDataEnArbolBinarioOrdenado(A, 75, 4);
+  A = insertarDataEnArbolBinarioOrdenado(A, 50, 2);
 
   generarSalida(A);
   printf("\n");
