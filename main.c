@@ -3,14 +3,14 @@
 #include <string.h>
 
 #define NAME 60
-#define L 300
+#define LINEAS 300
 
 struct nodo
 {
   int rut;
   int cantidad;
-  struct nodo *izquierda;
-  struct nodo *derecha;
+  struct nodo *izquierdo;
+  struct nodo *derecho;
 };
 typedef struct nodo tNodo;
 typedef tNodo *ABO;
@@ -24,8 +24,8 @@ ABO crearNodo(int rut, int cantidad)
   {
     data->rut = rut;
     data->cantidad = cantidad;
-    data->izquierda = NULL;
-    data->derecha = NULL;
+    data->izquierdo = NULL;
+    data->derecho = NULL;
   }
   else
   {
@@ -38,21 +38,21 @@ void escribirArchivo(ABO nodoArbol, FILE *archivo)
 {
   if (nodoArbol != NULL)
   {
-    escribirArchivo(nodoArbol->izquierda, archivo);
+    escribirArchivo(nodoArbol->izquierdo, archivo);
     if (nodoArbol->cantidad > 2)
       fprintf(archivo, "%i %i \n", nodoArbol->rut, nodoArbol->cantidad);
-    escribirArchivo(nodoArbol->derecha, archivo);
+    escribirArchivo(nodoArbol->derecho, archivo);
   }
 }
 
-void generarSalida(ABO A)
+void generarSalida(ABO tree)
 {
-  char fileName[60];
+  char fileName[NAME];
   printf("Ingrese el nombre del archivo de salida: ");
   gets(fileName);
   FILE *openFile;
   openFile = fopen(fileName, "w");
-  escribirArchivo(A, openFile);
+  escribirArchivo(tree, openFile);
 
   fclose(openFile);
 }
@@ -64,19 +64,19 @@ ABO insertarDataEnArbolBinarioOrdenado(ABO arbolOrdenado, int rut, int cantidad)
   else
   {
     if (rut < arbolOrdenado->rut)
-      arbolOrdenado->izquierda = insertarDataEnArbolBinarioOrdenado(arbolOrdenado->izquierda, rut, cantidad);
+      arbolOrdenado->izquierdo = insertarDataEnArbolBinarioOrdenado(arbolOrdenado->izquierdo, rut, cantidad);
     else
     {
       if (rut == arbolOrdenado->rut)
         arbolOrdenado->cantidad += cantidad;
       else
-        arbolOrdenado->derecha = insertarDataEnArbolBinarioOrdenado(arbolOrdenado->derecha, rut, cantidad);
+        arbolOrdenado->derecho = insertarDataEnArbolBinarioOrdenado(arbolOrdenado->derecho, rut, cantidad);
     }
   }
   return arbolOrdenado;
 }
 
-ABO procesarLinea(ABO arbol, char linea[L])
+ABO procesarLinea(ABO arbol, char linea[LINEAS])
 {
   char *trozo;
   int rut;
@@ -94,7 +94,7 @@ ABO procesarLinea(ABO arbol, char linea[L])
 void readFile(char nameFile[NAME])
 {
   FILE *openFile = fopen(nameFile, "r");
-  char linea[L];
+  char linea[LINEAS];
   int len;
   ABO tree = NULL;
 
@@ -105,7 +105,7 @@ void readFile(char nameFile[NAME])
   }
   while (feof(openFile) == 0)
   {
-    fgets(linea, L, openFile);
+    fgets(linea, LINEAS, openFile);
     len = strlen(linea);
     if (linea[len - 1] == '\n')
       linea[len - 1] = '\0';
