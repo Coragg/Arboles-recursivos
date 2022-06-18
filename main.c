@@ -3,6 +3,7 @@
 #include <string.h>
 
 #define NAME 60
+#define L 300 
 
 struct nodo
 {
@@ -78,9 +79,29 @@ ABO insertarDataEnArbolBinarioOrdenado(ABO arbolOrdenado, int rut, int cantidad)
 void readFile(char nameFile[NAME])
 {
   FILE *openFile = fopen(nameFile, "r");
+    char linea[L];
+    int len;
+    ABO tree;
+    tree = NULL;
+    
+    if(openFile == NULL)
+    {
+        printf("el archivo no se pudo abrir, revise su ubicacion.");
+        exit(1);
+    }
+    while (feof(openFile) == 0)
+    {
+        fgets(linea, L, openFile);
+        printf("%s", linea);
+    }
+ 
 
   fclose(openFile);
+
+  generarSalida();
 }
+
+
 
 int main()
 {
@@ -90,7 +111,7 @@ int main()
   gets(nameFile);
   readFile(nameFile);
 
-  ABO A;
+ /*  ABO A;
   A = NULL;
 
   A = insertarDataEnArbolBinarioOrdenado(A, 25833773, 10);
@@ -109,6 +130,6 @@ int main()
 
   generarSalida(A);
   printf("\n");
-
+ */
   return 0;
 }
