@@ -9,45 +9,119 @@
 #define NAME_SUR 100
 bool True = true;
 bool False = false;
-struct nodo{
-    char rut[RUT];
-    char nameAndSurname[NAME_SUR];
-    int tickets;
 
+struct nodo
+{
+  int rut;
+  int cantidad;
+  struct nodo *izq;
+  struct nodo *der;
 };
+typedef struct nodo tNodo;
+typedef tNodo *ArborBinarioOrdenado;
+ArborBinarioOrdenado createNodo(int rut, int cantidad)
+{
+  ArborBinarioOrdenado auxiliar;
 
-void createNodo(char rut[RUT], char nameAndSurname[NAME_SUR], int tickets){
-
-
-
+  auxiliar = (ArborBinarioOrdenado)malloc(sizeof(tNodo));
+  if (auxiliar != NULL)
+  {
+    auxiliar->rut = rut;
+    auxiliar->cantidad = cantidad;
+    auxiliar->izq = NULL;
+    auxiliar->der = NULL;
+  }
+  else
+  {
+    printf("\nNo hay memoria suficiente. Este programa se cerrara.");
+    exit(1);
+  }
+  return auxiliar;
 }
 
-bool ticketPenalty(int ticket){
-  if (ticket >= 1 && ticket <= 2){
-    return True;
-  } else {
-    return False;
+void inOrden(ArborBinarioOrdenado Arbol)
+{
+  if (Arbol != NULL)
+  {
+    inOrden(Arbol->izq);
+    printf("%i(%i) ", Arbol->rut, Arbol->cantidad);
+    inOrden(Arbol->der);
   }
 }
 
-void readFile(char nameFile[]){
-    FILE *openFile = fopen(nameFile, "r");
+ArborBinarioOrdenado insertarABO(ArborBinarioOrdenado Arbol, int rut, int cantidad)
+{
+  if (Arbol == NULL)
+    Arbol == createNodo(rut, cantidad);
 
-
-
-
-
-    fclose(openFile);
+  else
+  {
+    if (rut < Arbol->rut)
+    {
+      Arbol->izq = insertarABO(Arbol->izq, rut, cantidad);
+    }
+    else if (rut > Arbol)
+    {
+      if (rut == Arbol->rut)
+      {
+        Arbol->cantidad = Arbol->cantidad + cantidad;
+      }
+      Arbol->der = insertarABO(Arbol->der, rut, cantidad);
+    }
+    return Arbol;
+  }
 }
 
+void readFile(char nameFile[])
+{
+  FILE *openFile = fopen(nameFile, "r");
 
+  fclose(openFile);
+}
 
+int main()
+{
+  system("color 3");
+/*   char nameFile[NAME];
+  printf("Ingrese el nombre del archivo: ");
+  gets(nameFile);
+  readFile(nameFile); */
 
+  ArborBinarioOrdenado Arbol;
 
-int main() {
-    char nameFile[NAME];
-    printf("Ingrese el nombre del archivo: ");
-    gets(nameFile);
-    readFile(nameFile);
-    return 0;
+  Arbol = NULL;
+
+  Arbol = insertarABO(Arbol, 100, 1);
+  inOrden(Arbol);
+  printf("\n\n");
+
+  Arbol = insertarABO(Arbol, 50, 2);
+  inOrden(Arbol);
+  printf("\n\n");
+
+  Arbol = insertarABO(Arbol, 150, 3);
+  inOrden(Arbol);
+  printf("\n\n");
+
+  Arbol = insertarABO(Arbol, 25, 4);
+  inOrden(Arbol);
+  printf("\n\n");
+
+  Arbol = insertarABO(Arbol, 75, 5);
+  inOrden(Arbol);
+  printf("\n\n");
+
+  Arbol = insertarABO(Arbol, 110, 6);
+  inOrden(Arbol);
+  printf("\n\n");
+
+  Arbol = insertarABO(Arbol, 30, 7);
+  inOrden(Arbol);
+  printf("\n\n");
+
+  Arbol = insertarABO(Arbol, 50, 10);
+  inOrden(Arbol);
+  printf("\n\n");
+
+  return 0;
 }
