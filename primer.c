@@ -120,7 +120,7 @@ ListaParticipantes procesarLinea(ListaParticipantes L, char linea[Linea]){
   } 
   return L;
 }
-// CAMBIA EL FORMATO DE ARCHIVO A .SAL
+/* // CAMBIA EL FORMATO DE ARCHIVO A .SAL
 void cambiarSal(char nameFile[A], char newName[A]){
   char *token = strtok(nameFile, ".");
   strcpy(newName, token);
@@ -150,7 +150,7 @@ void createFile(ListaParticipantes L,char name[A]){
   pendientes = 200 - asignados;
   fprintf(abrirArchivo, "\nPendientes: %i", pendientes);
   fclose(abrirArchivo);
-}
+} */
 /*
 Esta funcion nos genera  la lectura del archivo buscado
 mas la impresion y creacion del archivo sal

@@ -3,7 +3,7 @@
 #include <string.h>
 
 #define NAME 60
-#define L 300 
+#define L 300
 
 struct nodo
 {
@@ -76,60 +76,57 @@ ABO insertarDataEnArbolBinarioOrdenado(ABO arbolOrdenado, int rut, int cantidad)
   return arbolOrdenado;
 }
 
+ABO procesarLinea(ABO arbol, char linea[L])
+{
+  char *trozo;
+  int rut;
+  char nameAndLastName[NAME];
+  int cantidad;
+  trozo = strtok(linea, ",");
+  rut = atoi(trozo);
+  trozo = strtok(NULL, ",");
+  strcpy(nameAndLastName, trozo);
+  trozo = strtok(NULL, ",");
+  cantidad = atoi(trozo);
+  arbol = insertarDataEnArbolBinarioOrdenado(arbol, rut, cantidad);
+}
+
 void readFile(char nameFile[NAME])
 {
   FILE *openFile = fopen(nameFile, "r");
-    char linea[L];
-    int len;
-    ABO tree;
-    tree = NULL;
-    
-    if(openFile == NULL)
-    {
-        printf("el archivo no se pudo abrir, revise su ubicacion.");
-        exit(1);
-    }
-    while (feof(openFile) == 0)
-    {
-        fgets(linea, L, openFile);
-        printf("%s", linea);
-    }
- 
+  char linea[L];
+  int len;
+  ABO tree = NULL;
 
+  if (openFile == NULL)
+  {
+    printf("el archivo no se pudo abrir, revise su ubicacion.");
+    exit(1);
+  }
+  while (feof(openFile) == 0)
+  {
+    fgets(linea, L, openFile);
+    len = strlen(linea);
+    if (linea[len - 1] == '\n')
+      linea[len - 1] = '\0';
+
+    if (strlen(linea) == 0)
+      break;
+
+    tree = procesarLinea(tree, linea);
+  }
   fclose(openFile);
-
-  generarSalida();
+  generarSalida(tree);
 }
-
-
 
 int main()
 {
-  system("color 3");
+  system("cls");
+  system("color 2");
   char nameFile[NAME];
   printf("Ingrese el nombre del archivo: ");
   gets(nameFile);
   readFile(nameFile);
 
- /*  ABO A;
-  A = NULL;
-
-  A = insertarDataEnArbolBinarioOrdenado(A, 25833773, 10);
-  A = insertarDataEnArbolBinarioOrdenado(A, 50, 2);
-  A = insertarDataEnArbolBinarioOrdenado(A, 150, 5);
-  A = insertarDataEnArbolBinarioOrdenado(A, 25, 2);
-  A = insertarDataEnArbolBinarioOrdenado(A, 75, 1);
-  A = insertarDataEnArbolBinarioOrdenado(A, 125, 2);
-  A = insertarDataEnArbolBinarioOrdenado(A, 200, 2);
-
-  A = insertarDataEnArbolBinarioOrdenado(A, 50, 1);
-  A = insertarDataEnArbolBinarioOrdenado(A, 125, 2);
-  A = insertarDataEnArbolBinarioOrdenado(A, 50, 1);
-  A = insertarDataEnArbolBinarioOrdenado(A, 75, 4);
-  A = insertarDataEnArbolBinarioOrdenado(A, 50, 2);
-
-  generarSalida(A);
-  printf("\n");
- */
   return 0;
 }

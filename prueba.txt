@@ -1,4 +1,4 @@
 12333444,Maria Reyes,2
 13444555,Pedro Diaz,1
-19000111,Jose Duran,4
+19000111,Jos´e Duran,1
 13444555,Pedro Diaz,2
