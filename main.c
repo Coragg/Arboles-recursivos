@@ -1,12 +1,10 @@
-
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 /* Constantes globales */
 #define NAME 60
-#define L 300
+#define LINEA 300
 
 /* Aqui es donde ve el tipo de dato y genera el puntero para poder recorrer el arbol */
 struct nodo
@@ -62,32 +60,31 @@ void generarSalida(ABO tree)
   FILE *openFile;
   openFile = fopen(fileName, "w");
   escribirArchivo(tree, openFile);
-
   fclose(openFile);
 }
 
 /* Aqui es donde analiza los datos entregados y los ordena */
-ABO insertarDataEnArbolBinarioOrdenado(ABO arbolOrdenado, int rut, int cantidad)
+ABO insertarDataEnArbolBinarioOrdenado(ABO arbolBinarioOrdenado, int rut, int cantidad)
 {
-  if (arbolOrdenado == NULL)
-    arbolOrdenado = crearNodo(rut, cantidad);
+  if (arbolBinarioOrdenado == NULL)
+    arbolBinarioOrdenado = crearNodo(rut, cantidad);
   else
   {
-    if (rut < arbolOrdenado->rut)
-      arbolOrdenado->izquierda = insertarDataEnArbolBinarioOrdenado(arbolOrdenado->izquierda, rut, cantidad);
+    if (rut < arbolBinarioOrdenado->rut)
+      arbolBinarioOrdenado->izquierda = insertarDataEnArbolBinarioOrdenado(arbolBinarioOrdenado->izquierda, rut, cantidad);
     else
     {
-      if (rut == arbolOrdenado->rut)
-        arbolOrdenado->cantidad += cantidad;
+      if (rut == arbolBinarioOrdenado->rut)
+        arbolBinarioOrdenado->cantidad += cantidad;
       else
-        arbolOrdenado->derecha = insertarDataEnArbolBinarioOrdenado(arbolOrdenado->derecha, rut, cantidad);
+        arbolBinarioOrdenado->derecha = insertarDataEnArbolBinarioOrdenado(arbolBinarioOrdenado->derecha, rut, cantidad);
     }
   }
-  return arbolOrdenado;
+  return arbolBinarioOrdenado;
 }
 
 /* Aqui se define los tipos de datos que hay en el archivo de lectura */
-ABO procesarLinea(ABO arbol, char linea[L])
+ABO procesarLinea(ABO arbol, char linea[LINEA])
 {
   char *trozo;
   int rut;
@@ -107,7 +104,7 @@ como recibiendo el archivo */
 void readFile(char nameFile[NAME])
 {
   FILE *openFile = fopen(nameFile, "r");
-  char linea[L];
+  char linea[LINEA];
   int len;
   ABO tree = NULL;
 
@@ -118,11 +115,10 @@ void readFile(char nameFile[NAME])
   }
   while (feof(openFile) == 0)
   {
-    fgets(linea, L, openFile);
+    fgets(linea, LINEA, openFile);
     len = strlen(linea);
     if (linea[len - 1] == '\n')
       linea[len - 1] = '\0';
-
     if (strlen(linea) == 0)
       break;
 
