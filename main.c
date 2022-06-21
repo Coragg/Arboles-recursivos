@@ -1,10 +1,12 @@
+/* Sofia Castro (21042213-7) NRC: 8490 y Victor Camero(25833773-5) NRC: 8489, 
+Profesora: Irene Zuccar, Fecha: 20/06/2022 */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
 /* Constantes globales */
 #define NAME 60
-#define LINEA 300
+#define LINEA 3000
 
 /* Aqui es donde ve el tipo de dato y genera el puntero para poder recorrer el arbol */
 struct nodo
