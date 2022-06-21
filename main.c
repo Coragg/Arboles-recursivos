@@ -1,20 +1,25 @@
+
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
+/* Constantes globales */
 #define NAME 60
-#define LINEAS 300
+#define L 300
 
+/* Aqui es donde ve el tipo de dato y genera el puntero para poder recorrer el arbol */
 struct nodo
 {
   int rut;
   int cantidad;
-  struct nodo *izquierdo;
-  struct nodo *derecho;
+  struct nodo *izquierda;
+  struct nodo *derecha;
 };
 typedef struct nodo tNodo;
 typedef tNodo *ABO;
 
+/* Aqui es donde se guardan los datos de rut y cantidad de boletos en el arbol*/
 ABO crearNodo(int rut, int cantidad)
 {
   ABO data;
@@ -24,8 +29,8 @@ ABO crearNodo(int rut, int cantidad)
   {
     data->rut = rut;
     data->cantidad = cantidad;
-    data->izquierdo = NULL;
-    data->derecho = NULL;
+    data->izquierda = NULL;
+    data->derecha = NULL;
   }
   else
   {
@@ -34,20 +39,24 @@ ABO crearNodo(int rut, int cantidad)
   }
   return data;
 }
+
+/* Aqui es  para escribir la informacion del archivo procesado recibiendo 
+el tipo de archivo y el nodo donde se va a escribir la informacion*/
 void escribirArchivo(ABO nodoArbol, FILE *archivo)
 {
   if (nodoArbol != NULL)
   {
-    escribirArchivo(nodoArbol->izquierdo, archivo);
+    escribirArchivo(nodoArbol->izquierda, archivo);
     if (nodoArbol->cantidad > 2)
       fprintf(archivo, "%i %i \n", nodoArbol->rut, nodoArbol->cantidad);
-    escribirArchivo(nodoArbol->derecho, archivo);
+    escribirArchivo(nodoArbol->derecha, archivo);
   }
 }
 
+/* Aqui es donde genera el archivo de salida con los datos finales */
 void generarSalida(ABO tree)
 {
-  char fileName[NAME];
+  char fileName[60];
   printf("Ingrese el nombre del archivo de salida: ");
   gets(fileName);
   FILE *openFile;
@@ -57,6 +66,7 @@ void generarSalida(ABO tree)
   fclose(openFile);
 }
 
+/* Aqui es donde analiza los datos entregados y los ordena */
 ABO insertarDataEnArbolBinarioOrdenado(ABO arbolOrdenado, int rut, int cantidad)
 {
   if (arbolOrdenado == NULL)
@@ -64,19 +74,20 @@ ABO insertarDataEnArbolBinarioOrdenado(ABO arbolOrdenado, int rut, int cantidad)
   else
   {
     if (rut < arbolOrdenado->rut)
-      arbolOrdenado->izquierdo = insertarDataEnArbolBinarioOrdenado(arbolOrdenado->izquierdo, rut, cantidad);
+      arbolOrdenado->izquierda = insertarDataEnArbolBinarioOrdenado(arbolOrdenado->izquierda, rut, cantidad);
     else
     {
       if (rut == arbolOrdenado->rut)
         arbolOrdenado->cantidad += cantidad;
       else
-        arbolOrdenado->derecho = insertarDataEnArbolBinarioOrdenado(arbolOrdenado->derecho, rut, cantidad);
+        arbolOrdenado->derecha = insertarDataEnArbolBinarioOrdenado(arbolOrdenado->derecha, rut, cantidad);
     }
   }
   return arbolOrdenado;
 }
 
-ABO procesarLinea(ABO arbol, char linea[LINEAS])
+/* Aqui se define los tipos de datos que hay en el archivo de lectura */
+ABO procesarLinea(ABO arbol, char linea[L])
 {
   char *trozo;
   int rut;
@@ -91,10 +102,12 @@ ABO procesarLinea(ABO arbol, char linea[LINEAS])
   arbol = insertarDataEnArbolBinarioOrdenado(arbol, rut, cantidad);
 }
 
+/* Aqui lee el archivo viendo el largo y rescatando el rut y las entradas, 
+como recibiendo el archivo */
 void readFile(char nameFile[NAME])
 {
   FILE *openFile = fopen(nameFile, "r");
-  char linea[LINEAS];
+  char linea[L];
   int len;
   ABO tree = NULL;
 
@@ -105,7 +118,7 @@ void readFile(char nameFile[NAME])
   }
   while (feof(openFile) == 0)
   {
-    fgets(linea, LINEAS, openFile);
+    fgets(linea, L, openFile);
     len = strlen(linea);
     if (linea[len - 1] == '\n')
       linea[len - 1] = '\0';
@@ -119,10 +132,9 @@ void readFile(char nameFile[NAME])
   generarSalida(tree);
 }
 
+/* Aqui es donde se ejecuta el programa  */
 int main()
 {
-  system("cls");
-  system("color 2");
   char nameFile[NAME];
   printf("Ingrese el nombre del archivo: ");
   gets(nameFile);
@@ -130,3 +142,4 @@ int main()
 
   return 0;
 }
+
