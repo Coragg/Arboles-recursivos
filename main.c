@@ -115,9 +115,9 @@ void readFile(char nameFile[NAME])
     printf("el archivo no se pudo abrir, revise su ubicacion.");
     exit(1);
   }
-  while (feof(openFile) == 0)
+  while (fgets(linea, LINEA, openFile))
   {
-    fgets(linea, LINEA, openFile);
+    
     len = strlen(linea);
     if (linea[len - 1] == '\n')
       linea[len - 1] = '\0';

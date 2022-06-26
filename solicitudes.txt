@@ -1,0 +1,155 @@
+11453237,Feliciana Quesada-Zamorano,2
+12226395,Jose Ignacio Sierra Malo,1
+12495595,Amado Sedano,2
+12499429,David Agullo Ródenas,2
+13661679,Maricela Barrera Cerdán,2
+13685393,Timoteo Zamora Escamilla,1
+17191296,Juana Marina Meléndez Mateu,2
+18858834,Ariel Patiño Bermúdez,2
+18858834,Ariel Patiño Bermúdez,1
+18858834,Ariel Patiño Bermúdez,2
+19979271,Horacio Real,2
+21286529,Zoraida Guillen,2
+21621175,Hernando Pineda Samper,2
+21663819,Amor Álvarez Barragán,2
+21663819,Amor Álvarez Barragn,1
+22732714,Roque del Vendrell,2
+22744676,Melchor Zamorano,1
+23671137,Celestina Priego Alvarez,2
+26838791,Víctor Lopez Barberá,2
+27964513,Isidoro Varela Casals,2
+28129456,Benjamín Ibáñez Pareja,1
+28956276,Fabricio Figueroa Manzanares,1
+29635521,Aristides del Escrivá,2
+31123541,Micaela Estevez Jove,2
+31123541,Micaela Estevez Jove,2
+31719448,Ernesto Badía Pedrero,1
+31919863,Crescencia Nuñez Gutiérrez,2
+33458469,Felicia Raya Ibañez,2
+33468476,Fabricio Barberá,2
+36342747,Lázaro Serna Pujol,1
+36342747,Lázaro Serna Pujol,2
+36342747,Lázaro Serna Pujol,1
+36831993,Adalberto Muñoz Alberto,1
+36831993,Adalberto Muñoz Alberto,2
+36831993,Adalberto Muñoz Alberto,1
+37224228,Manuela Uría Silva,2
+37224228,Manuela Uría Silva,1
+37224228,Manuela Uría Silva,2
+38891182,Felicidad Iñiguez,2
+38891182,Felicidad Iñiguez,2
+38891182,Felicidad Iñiguez,2
+42438462,Candelario del Vega,2
+42438462,Candelario del Vega,2
+42438462,Candelario del Vega,2
+43769757,Amador Salamanca Villalobos,1
+44474772,Mario Jerónimo Bustamante Talavera,2
+44579895,Basilio Puente Diego,2
+46864753,Lorena Dominguez-Nadal,1
+46932453,Juan Carlos Calderon Roura,2
+49411868,Amarilis Larrea-Palma,2
+49633391,Germán Ortega-Santamaria,2
+49888297,Gertrudis Riquelme Iñiguez,2
+51145547,Ariadna Juliá Escalona,1
+52287997,Benigna Gallego Pastor,2
+52296471,Carla del Samper,2
+52518998,Primitiva Vall,1
+52518998,Primitiva Vall,1
+52856253,Estrella Lobo Pintor,2
+52998985,Anabel Rueda Jurado,2
+53954534,Dani Edmundo Ramos Hoz,1
+53954534,Dani Edmundo Ramos Hoz,1
+55222588,Yésica Figueras Girón,1
+55893483,Alma Llanos,1
+56968661,Visitación Montes-Mayol,2
+57312687,Julie Barragán,2
+57312687,Julie Barragán,2
+57413991,Néstor Hierro Morera,2
+58319686,Demetrio Gámez Sevilla,1
+58546338,Chus Francisco Carreño,2
+61121795,Camila de Gilabert,1
+61637633,Simón Cantero Córdoba,1
+63158138,Alcides Barragán Lobo,2
+63344831,Aroa Griselda Polo Sabater,1
+63946563,Demetrio Clemente Puga,2
+64955434,Teresa Barceló Amador,2
+64955434,Teresa Barceló Amador,1
+64955434,Teresa Barceló Amador,1
+65367139,Ciríaco de Vall,2
+65576525,Soledad del Burgos,1
+65734336,Lupita Salas-Carmona,2
+66423118,Maximiliano de Pastor,1
+67966883,Isidoro Parra Tur,1
+68138613,Plinio Llobet Hierro,1
+71485227,Lourdes Guerrero Delgado,2
+73193618,Ildefonso Lloret Domingo,1
+73193618,Ildefonso Lloret Domingo,2
+74258828,Sancho Duque Alarcón,2
+74355983,María Jáuregui,1
+74741913,Maristela Blanca Tejero,2
+74741913,Maristela Blanca Tejero,2
+74741913,Maristela Blanca Tejero,1
+74741913,Maristela Blanca Tejero,1
+74741913,Maristela Blanca Tejero,2
+74741913,Maristela Blanca Tejero,2
+74741913,Maristela Blanca Tejero,1
+74961165,Jorge Sala Gonzalo,2
+75589577,Severo Roig-Sanmiguel,2
+75791117,Felipe de Reig,2
+76127689,Lara Corona Parejo Izaguirre,2
+76127689,Lara Corona Parejo Izaguirre,1
+76127689,Lara Corona Parejo Izaguirre,2
+76127689,Lara Corona Parejo Izaguirre,1
+76127689,Lara Corona Pare Izaguirre,1
+76127689,Lara Corona Parejo Izaguirre,1
+76127689,Lara Corona Parejo Izaguirre,1
+76127689,Lara Corona Parejo Izagrre,2
+76127689,Lara Corona Parejo Izaguirre,1
+76127689,Lara Corona Parejo Izaguirre,1
+77545251,Chita Inmaculada Guzman Flor,1
+77661893,Dionisio Asdrubal Conde Llorente,2
+77661893,Dionisio Asdrubal Conde Llorente,2
+77661893,Dionisio Asdrbal Conde Llorente,1
+78687247,Joaquina Jordán Esparza,1
+78687247,Joaquina Jordán Esparza,2
+78825312,Belen del Feliu,1
+78825312,Belen del Feliu,2
+78825312,Belen del Feliu,1
+78825312,Belen del Feliu,2
+78825312,Belen del Feliu,1
+78825312,Belen del Feliu,1
+78825312,Belen del Feliu,2
+79425535,José María Nadal Cerro,2
+81122777,Hector Larrañaga-Burgos,1
+81247113,Saturnino Galindo Gallego,2
+82864664,Guadalupe Romeu Ballester,2
+83143232,Ema Esparza-Vargas,1
+83274849,Valentín Barba Román,1
+83885239,Yaiza Galiano Coello,1
+83885239,Yaiza Galiano Coello,1
+84496839,Zoraida Losa Galvez,2
+84496839,Zoraida Losa Galvez,1
+85219975,Lucho Carmona Juan,1
+85464371,Áurea Vergara Garriga,1
+86547484,Gema Pineda,1
+87224493,Jose Antonio Porras Cordero,1
+87224493,Jose Antonio Porras Cordero,2
+87224493,Jose Antonio Porras Cordero,1
+87224493,Jose Antonio Porras Cordero,2
+87224493,Jose Antonio Porras Cordero,2
+87224493,Jose Antonio Porras Cordero,1
+87224493,Jose Antonio Porras C.rdero,2
+87224493,Jose Antonio Porras Cordero,2
+87224493,Jose Antonio Porras Cordero,2
+88279797,Tomás de Lamas,1
+88279797,Tomás de Lamas,1
+88825551,Sigfrido Gonzalo Duque,2
+89791918,Valerio Borrego,2
+91946584,Rosendo Cayetano Conesa Céspedes,2
+92367651,Jordana Pereira Sanchez,2
+92674492,Balduino Losa,2
+93457868,Febe Castells Cerda,2
+94172265,Ámbar Olmedo Valbuena,2
+97416469,Evangelina Cuadrado Álvarez,1
+97876723,Sara Revilla Fajardo,2
+98457818,Saturnino Galvez Coronado,2
